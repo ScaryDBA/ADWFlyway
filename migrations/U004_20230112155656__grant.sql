@@ -1,6 +1,8 @@
-SET QUOTED_IDENTIFIER ON
+﻿SET NUMERIC_ROUNDABORT OFF
 GO
-SET ANSI_NULLS ON
+SET ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT, QUOTED_IDENTIFIER, ANSI_NULLS ON
+GO
+PRINT N'Creating [HumanResources].[GettingData]'
 GO
 CREATE VIEW [HumanResources].[GettingData]
 AS
@@ -21,3 +23,4 @@ SELECT BusinessEntityID,
        rowguid,
        ModifiedDate FROM HumanResources.Employee;
 GO
+
