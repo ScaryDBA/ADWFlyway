@@ -50,7 +50,3 @@ EXEC sp_addextendedproperty N'MS_Description', N'Nonclustered index.', 'SCHEMA',
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'Clustered index created by a primary key constraint.', 'SCHEMA', N'Production', 'TABLE', N'ProductReview', 'INDEX', N'PK_ProductReview_ProductReviewID'
 GO
-CREATE FULLTEXT INDEX ON [Production].[ProductReview] KEY INDEX [PK_ProductReview_ProductReviewID] ON [AW2016FullTextCatalog]
-GO
-ALTER FULLTEXT INDEX ON [Production].[ProductReview] ADD ([Comments] LANGUAGE 1033)
-GO

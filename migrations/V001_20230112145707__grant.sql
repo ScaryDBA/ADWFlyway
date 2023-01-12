@@ -2,13 +2,6 @@
 GO
 SET ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT, QUOTED_IDENTIFIER, ANSI_NULLS ON
 GO
-PRINT N'Creating full text catalogs'
-GO
-CREATE FULLTEXT CATALOG [AW2016FullTextCatalog]
-WITH ACCENT_SENSITIVITY = ON
-AS DEFAULT
-AUTHORIZATION [dbo]
-GO
 PRINT N'Creating schemas'
 GO
 IF SCHEMA_ID(N'HumanResources') IS NULL
@@ -714,16 +707,6 @@ PRINT N'Creating index [IX_JobCandidate_BusinessEntityID] on [HumanResources].[J
 GO
 CREATE NONCLUSTERED INDEX [IX_JobCandidate_BusinessEntityID] ON [HumanResources].[JobCandidate] ([BusinessEntityID])
 GO
-PRINT N'Adding full text indexing to tables'
-GO
-CREATE FULLTEXT INDEX ON [HumanResources].[JobCandidate] KEY INDEX [PK_JobCandidate_JobCandidateID] ON [AW2016FullTextCatalog]
-GO
-PRINT N'Adding full text indexing to columns'
-GO
-ALTER FULLTEXT INDEX ON [HumanResources].[JobCandidate] ADD ([Resume] LANGUAGE 1033)
-GO
-ALTER FULLTEXT INDEX ON [HumanResources].[JobCandidate] ENABLE
-GO
 PRINT N'Creating [HumanResources].[Shift]'
 GO
 CREATE TABLE [HumanResources].[Shift]
@@ -1146,18 +1129,6 @@ PRINT N'Adding constraints to [Production].[Document]'
 GO
 ALTER TABLE [Production].[Document] ADD CONSTRAINT [UQ__Document__F73921F7C5112C2E] UNIQUE NONCLUSTERED ([rowguid])
 GO
-PRINT N'Adding full text indexing to tables'
-GO
-CREATE FULLTEXT INDEX ON [Production].[Document] KEY INDEX [PK_Document_DocumentNode] ON [AW2016FullTextCatalog]
-GO
-PRINT N'Adding full text indexing to columns'
-GO
-ALTER FULLTEXT INDEX ON [Production].[Document] ADD ([DocumentSummary] LANGUAGE 1033)
-GO
-ALTER FULLTEXT INDEX ON [Production].[Document] ADD ([Document] TYPE COLUMN [FileExtension] LANGUAGE 1033)
-GO
-ALTER FULLTEXT INDEX ON [Production].[Document] ENABLE
-GO
 PRINT N'Creating [Production].[Illustration]'
 GO
 CREATE TABLE [Production].[Illustration]
@@ -1449,16 +1420,6 @@ GO
 PRINT N'Creating index [IX_ProductReview_ProductID_Name] on [Production].[ProductReview]'
 GO
 CREATE NONCLUSTERED INDEX [IX_ProductReview_ProductID_Name] ON [Production].[ProductReview] ([ProductID], [ReviewerName]) INCLUDE ([Comments])
-GO
-PRINT N'Adding full text indexing to tables'
-GO
-CREATE FULLTEXT INDEX ON [Production].[ProductReview] KEY INDEX [PK_ProductReview_ProductReviewID] ON [AW2016FullTextCatalog]
-GO
-PRINT N'Adding full text indexing to columns'
-GO
-ALTER FULLTEXT INDEX ON [Production].[ProductReview] ADD ([Comments] LANGUAGE 1033)
-GO
-ALTER FULLTEXT INDEX ON [Production].[ProductReview] ENABLE
 GO
 PRINT N'Creating [Production].[ProductSubcategory]'
 GO
@@ -3330,6 +3291,27 @@ BEGIN
     END CATCH;
 END;
 GO
+PRINT N'Creating [HumanResources].[GettingData]'
+GO
+CREATE VIEW [HumanResources].[GettingData]
+AS
+SELECT BusinessEntityID,
+       NationalIDNumber,
+       LoginID,
+       OrganizationNode,
+       OrganizationLevel,
+       JobTitle,
+       BirthDate,
+       MaritalStatus,
+       Gender,
+       HireDate,
+       SalariedFlag,
+       VacationHours,
+       SickLeaveHours,
+       CurrentFlag,
+       rowguid,
+       ModifiedDate FROM HumanResources.Employee;
+GO
 PRINT N'Creating [HumanResources].[vEmployee]'
 GO
 
@@ -4111,8 +4093,6 @@ GO
 PRINT N'Creating primary key [PK_DatabaseLog_DatabaseLogID] on [dbo].[DatabaseLog]'
 GO
 ALTER TABLE [dbo].[DatabaseLog] ADD CONSTRAINT [PK_DatabaseLog_DatabaseLogID] PRIMARY KEY NONCLUSTERED ([DatabaseLogID])
-GO
-PRINT N'Adding full text indexing to columns'
 GO
 PRINT N'Adding constraints to [HumanResources].[EmployeeDepartmentHistory]'
 GO

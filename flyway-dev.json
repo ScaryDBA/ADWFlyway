@@ -1,7 +1,7 @@
 {
   "version": "2.0",
-  "name": "AdventureWorks",
-  "id": "1dd4e88c-6eb4-4877-8d6c-642d032d7654",
+  "name": "ADWFlyway",
+  "id": "69ceaf20-da18-47d8-ba2f-fe8749fc2813",
   "databaseType": "SqlServer",
   "development": {
     "scriptsFolder": "./schema-model"
@@ -9,21 +9,6 @@
   "deployment": {
     "flywayConfFiles": [
       "./flyway.conf"
-    ],
-    "generateUndoScripts": true,
-    "targetDatabases": [
-      {
-        "connectionProvider": {
-          "type": "UsernamePassword",
-          "url": "jdbc:sqlserver://localhost;authentication=sqlPassword;databaseName=ADWks;encrypt=true;integratedSecurity=false;trustServerCertificate=true",
-          "username": "sa",
-          "password": {
-            "secretType": "DefaultSecretStore",
-            "name": "Flyway Desktop 07ca09c1-2b69-436f-8c18-3db7397afc71"
-          }
-        },
-        "schemas": []
-      }
     ]
   }
 }
