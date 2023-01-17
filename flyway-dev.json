@@ -11,5 +11,21 @@
       "./flyway.conf"
     ],
     "generateUndoScripts": true
+  },
+  "capabilities": {
+    "staticData": {
+      "configuredTables": [
+        {
+          "schema": "Person",
+          "table": "AddressType",
+          "excludedColumns": []
+        },
+        {
+          "schema": "Person",
+          "table": "ContactType",
+          "excludedColumns": []
+        }
+      ]
+    }
   }
 }

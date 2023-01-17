@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DatabaseInformation Version="3">
   <ScriptFileEncoding>UTF8</ScriptFileEncoding>
+  <DefaultCollation>Latin1_General_CI_AS</DefaultCollation>
   <DefaultSchema>dbo</DefaultSchema>
   <DefaultUser>dbo</DefaultUser>
   <DefaultFilegroup>PRIMARY</DefaultFilegroup>
@@ -64,6 +65,8 @@
     <DataWriteAllFilesInOneDirectory>True</DataWriteAllFilesInOneDirectory>
   </WriteToFileOptions>
   <DataFileSet>
-    <Count>0</Count>
+    <Count>2</Count>
+    <DataFile>Person.ContactType_Data.sql</DataFile>
+    <DataFile>Person.AddressType_Data.sql</DataFile>
   </DataFileSet>
 </DatabaseInformation>
