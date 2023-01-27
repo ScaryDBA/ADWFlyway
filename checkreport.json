@@ -1,0 +1,30 @@
+{
+  "individualResults": [
+    {
+      "onlyInSource": [],
+      "onlyInTarget": [],
+      "differences": [],
+      "database": "ADWks",
+      "timestamp": "2023-01-17T10:00:58.148057200",
+      "operation": "changes"
+    },
+    {
+      "results": [],
+      "timestamp": "2023-01-17T10:31:29.083049",
+      "operation": "code"
+    },
+    {
+      "results": [],
+      "timestamp": "2023-01-18T14:24:46.778048700",
+      "operation": "code"
+    },
+    {
+      "onlyInSource": [],
+      "onlyInTarget": [],
+      "differences": [],
+      "database": "ADWks",
+      "timestamp": "2023-01-19T09:37:26.646870400",
+      "operation": "changes"
+    }
+  ]
+}

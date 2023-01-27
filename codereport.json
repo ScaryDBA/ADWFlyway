@@ -1,0 +1,21 @@
+{
+  "individualResults": [
+    {
+      "results": [
+        {
+          "filepath": "C:\\Users\\grant\\OneDrive\\Documents\\GitHub\\ADWFlyway\\migrations\\V005_20230117142150__grant.sql",
+          "violations": [
+            {
+              "line_no": 43,
+              "line_pos": 1,
+              "description": "Files must end with a single trailing newline.",
+              "code": "L009"
+            }
+          ]
+        }
+      ],
+      "timestamp": "2023-01-19T09:38:13.275058900",
+      "operation": "code"
+    }
+  ]
+}
